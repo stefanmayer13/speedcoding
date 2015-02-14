@@ -1,0 +1,34 @@
+{
+  "name": "speedcoding",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-nodemon": "^1.0.5",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-util": "^3.0.2",
+    "jsx-loader": "^0.12.2",
+    "node-jsx": "^0.12.4",
+    "react-tools": "^0.12.2",
+    "react-router": "^0.11.6",
+    "webpack": "^1.5.1",
+    "react": "^0.12.2"
+  },
+  "dependencies": {
+    "hapi": "^8.1.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "rootDir": "./",
+    "scriptPreprocessor": "./lib/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "react"
+    ],
+    "collectCoverage": true,
+    "coverageFormats": [
+      "json",
+      "html"
+    ]
+  }
+}
