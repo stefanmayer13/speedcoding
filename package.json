@@ -2,19 +2,26 @@
   "name": "speedcoding",
   "version": "0.0.1",
   "devDependencies": {
+    "chai": "^2.0.0",
     "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0",
     "gulp-nodemon": "^1.0.5",
     "gulp-ruby-sass": "^0.7.1",
     "gulp-util": "^3.0.2",
     "jsx-loader": "^0.12.2",
+    "mocha": "^2.1.0",
     "node-jsx": "^0.12.4",
-    "react-tools": "^0.12.2",
+    "react": "^0.12.2",
     "react-router": "^0.11.6",
-    "webpack": "^1.5.1",
-    "react": "^0.12.2"
+    "react-tools": "^0.12.2",
+    "sinon": "^1.12.2",
+    "webpack": "^1.5.1"
   },
   "dependencies": {
-    "hapi": "^8.1.0"
+    "async": "^0.9.0",
+    "hapi": "^8.1.0",
+    "redis": "^0.12.1",
+    "rx": "^2.3.25"
   },
   "scripts": {
     "test": "jest"

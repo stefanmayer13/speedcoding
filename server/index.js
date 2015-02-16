@@ -7,11 +7,14 @@ var nodejsx = require('node-jsx').install();
 var React = require('react');
 var routes = require('../app/routes');
 var Router = require('react-router');
+var Api = require('./Api');
 
 server.connection({
     host: 'localhost',
     port: 8080
 });
+
+Api.addRoutes(server);
 
 server.route({
     method: 'GET',

@@ -3,6 +3,7 @@ var webpack = require("webpack");
 var nodemon = require('gulp-nodemon');
 var sass = require('gulp-ruby-sass');
 var gutil = require("gulp-util");
+var mocha = require('gulp-mocha');
 
 var webpackConfig = require("./webpack.config.js");
 
@@ -13,7 +14,7 @@ gulp.task('runserver', function () {
         script: 'server/index.js',
         ext: 'js html',
         env: { 'NODE_ENV': 'development' },
-        nodeArgs: ['--debug']
+        nodeArgs: ['--debug', '--harmony_arrow_functions']
     }).on('restart', function () {
         console.log('server restarted!')
     });
@@ -44,4 +45,9 @@ gulp.task('webpack', function(callback) {
         }));
         callback();
     });
+});
+
+gulp.task('test', function () {
+    return gulp.src('./server/tests/**/*.js', {read: false})
+        .pipe(mocha({reporter: 'nyan'}));
 });

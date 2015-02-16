@@ -7,7 +7,7 @@ var Home = React.createClass({
         return (
             <div>
                 Hello
-                <p><Link to="cart">Cart</Link></p>
+                <p><Link to="viewer">Viewer</Link></p>
                 <p><a href="doesnotexist">404</a></p>
             </div>
         );

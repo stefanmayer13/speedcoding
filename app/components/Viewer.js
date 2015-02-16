@@ -1,7 +1,7 @@
 var React = require('react');
 var Link = require('react-router').Link;
 
-var Cart = React.createClass({
+var Viewer = React.createClass({
 
     render: function() {
         return (
@@ -13,4 +13,4 @@ var Cart = React.createClass({
     }
 });
 
-module.exports = Cart;
+module.exports = Viewer;
