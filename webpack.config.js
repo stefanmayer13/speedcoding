@@ -27,7 +27,7 @@ module.exports = {
     module: {
         loaders: [
             // Pass *.jsx files through jsx-loader transform
-            { test: /\.js$/, loader: 'jsx' },
+            { test: /\.js$/, loader: 'babel' },
         ]
     },
 

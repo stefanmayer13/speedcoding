@@ -1,9 +1,10 @@
 'use strict';
 
+require('babel/register');
+
 var Hapi = require('hapi');
 
 var server = new Hapi.Server();
-var nodejsx = require('node-jsx').install();
 var React = require('react');
 var routes = require('../app/routes');
 var Router = require('react-router');

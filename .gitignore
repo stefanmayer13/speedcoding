@@ -3,3 +3,4 @@ dist
 css
 node_modules
 .idea
+coverage

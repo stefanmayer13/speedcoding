@@ -4,6 +4,8 @@ var nodemon = require('gulp-nodemon');
 var sass = require('gulp-ruby-sass');
 var gutil = require("gulp-util");
 var mocha = require('gulp-mocha');
+var jest = require('gulp-jest');
+require("babel/register");
 
 var webpackConfig = require("./webpack.config.js");
 
@@ -47,7 +49,21 @@ gulp.task('webpack', function(callback) {
     });
 });
 
-gulp.task('test', function () {
+gulp.task('test', ['mocha', 'jest']);
+
+gulp.task('mocha', function () {
     return gulp.src('./server/tests/**/*.js', {read: false})
         .pipe(mocha({reporter: 'nyan'}));
+});
+
+gulp.task('jest', function () {
+    return gulp.src('app/tests').pipe(jest({
+        "rootDir": "./",
+        "scriptPreprocessor": "./node_modules/babel-jest",
+        "testDirectoryName": "app/tests",
+        "collectCoverage": true,
+        "unmockedModulePathPatterns": [
+            "react"
+        ]
+    }));
 });

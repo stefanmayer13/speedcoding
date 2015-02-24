@@ -1,11 +1,9 @@
 var chai = require('chai');
 var sinon = require('sinon');
 var expect = chai.expect;
-var redis = require('redis');
-var client = redis.createClient();
 
 var Games = require('../../services/Games');
-var redisGetStub = sinon.stub(client, 'get');
+var redisGetStub = sinon.stub();
 Games.setClient({
     get: redisGetStub
 });

@@ -2,15 +2,18 @@
   "name": "speedcoding",
   "version": "0.0.1",
   "devDependencies": {
+    "babel": "^4.4.6",
+    "babel-core": "^4.4.6",
+    "babel-jest": "^4.0.0",
+    "babel-loader": "^4.0.0",
     "chai": "^2.0.0",
     "gulp": "^3.8.10",
     "gulp-mocha": "^2.0.0",
     "gulp-nodemon": "^1.0.5",
     "gulp-ruby-sass": "^0.7.1",
     "gulp-util": "^3.0.2",
-    "jsx-loader": "^0.12.2",
+    "jest-cli": "^0.4.0",
     "mocha": "^2.1.0",
-    "node-jsx": "^0.12.4",
     "react": "^0.12.2",
     "react-router": "^0.11.6",
     "react-tools": "^0.12.2",
@@ -28,14 +31,11 @@
   },
   "jest": {
     "rootDir": "./",
-    "scriptPreprocessor": "./lib/preprocessor.js",
+    "scriptPreprocessor": "./node_modules/babel-jest",
+    "testDirectoryName": "app/tests",
+    "collectCoverage": true,
     "unmockedModulePathPatterns": [
       "react"
-    ],
-    "collectCoverage": true,
-    "coverageFormats": [
-      "json",
-      "html"
     ]
   }
 }
