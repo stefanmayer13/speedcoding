@@ -1,11 +1,13 @@
+require('babel/register');
+
 var gulp = require('gulp');
 var webpack = require("webpack");
 var nodemon = require('gulp-nodemon');
 var sass = require('gulp-ruby-sass');
 var gutil = require("gulp-util");
 var mocha = require('gulp-mocha');
+var istanbul = require('gulp-istanbul');
 var jest = require('gulp-jest');
-require("babel/register");
 
 var webpackConfig = require("./webpack.config.js");
 
@@ -51,9 +53,22 @@ gulp.task('webpack', function(callback) {
 
 gulp.task('test', ['mocha', 'jest']);
 
-gulp.task('mocha', function () {
-    return gulp.src('./server/tests/**/*.js', {read: false})
-        .pipe(mocha({reporter: 'nyan'}));
+gulp.task('mocha', function (cb) {
+    gulp.src(['server/index.js'])
+        .pipe(istanbul({
+            includeUntested: true
+        }))
+        .pipe(istanbul.hookRequire())
+        .on('finish', function () {
+            gulp.src(['server/tests/**/*.js'])
+                .pipe(mocha({reporter: 'nyan'}))
+                .pipe(istanbul.writeReports({
+                    dir: './reports',
+                    reporters: [ 'lcov', 'json', 'text', 'text-summary' ],
+                    reportOpts: { dir: './reports' }
+                }))
+                .on('end', cb);
+        });
 });
 
 gulp.task('jest', function () {
